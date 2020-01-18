@@ -1,7 +1,7 @@
 #ifndef ANIMAL_HPP
 #define ANIMAL_HPP
 
-#include <cstdint> // fixed width integer types
+#include <inttypes.h>
 #include <vector>
 #include <string>
 
@@ -19,6 +19,9 @@ public:
   bool isFriendWith(AnimalID animal);
 
   void setFriendship(AnimalID animal, bool status);
+
+  AnimalID loseOneRandomFriend(void);
+  size_t nFriends(void);
 
 protected:
   const std::string _name;

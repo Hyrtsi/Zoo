@@ -26,6 +26,8 @@ int main(int argc, char *argv[])
 
   zoo.printAnimals();
   
+  printf("\n");
+
   zoo.liveDay();
 
 

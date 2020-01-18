@@ -7,7 +7,7 @@
 class Zoo
 {
   public:
-    Zoo(void) {};
+    Zoo(void) : _runningID(0L) { };
 
     // Print all animals, their properties and friends
     void printAnimals(void);
@@ -18,7 +18,6 @@ class Zoo
     void addAnimal(Animal* animal);
     
   private:
-    std::vector<Animal*> _animals;
     std::unordered_map<AnimalID, Animal*> _animalMap;
     AnimalID _runningID;
     void editFriendship(Animal* animal1, Animal* animal2, bool isFriend);

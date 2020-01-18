@@ -1,6 +1,9 @@
 #include "animal.hpp"
 
 #include <algorithm>
+#include <random>
+#include <time.h>
+
 
 bool Animal::isFriendWith(AnimalID animal)
 {
@@ -32,4 +35,19 @@ void Animal::setFriendship(AnimalID animal, bool status)
     // remove from friends
     _friends.erase(std::remove(_friends.begin(), _friends.end(), animal), _friends.end());
   }
+}
+
+AnimalID Animal::loseOneRandomFriend(void)
+{
+  // Take random number from 0 to nFriends
+  srand(time(NULL));
+  int64_t randIndex = rand() % _friends.size();
+
+  // Lose the random friend
+  setFriendship(_friends[randIndex], false);
+}
+
+size_t Animal::nFriends(void)
+{
+  return _friends.size();
 }
