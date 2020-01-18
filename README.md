@@ -57,6 +57,10 @@ I tried to avoid overkill solutions for this (seemingly) simple task. However, I
 
 The zoo in this task is 7 animals, so I didn't even bother to think the time complexity of searches in the data structures. If there would have been a note on scalability in the problem poster, I would have done this probably differently and benchmarked different options.
 
+### Known limitations/"features"
+
+- In a day, animal may lose a friend and get the same friend back instantly
+
 ## Installation (Ubuntu)
 
 ### Requirements
@@ -82,3 +86,11 @@ After build,
 ```
 
 Instructions are printed to console. Press keys 1-3 to use the program.
+
+## Tests
+
+Last but not least. How this program was verified. As it is dealing with functions that have side effects by nature (printing to console) and randomness, I didn't think unit tests make sense for many functions.
+
+Things that may be tested automatically
+- `animal.hpp`: Create instance of an animal with known list of friends instead of empty list OR use `setFriendship`. Check with `isFriendWith` and `nFriends` that the results are according to what was set
+- `zoo.hpp`: Amount of friends for a given animal should change after `tryAddRandomFriend` and `tryRemoveRandomFriend` unless the animal had 0/max friends. `liveDay` should increase amount of friends 
