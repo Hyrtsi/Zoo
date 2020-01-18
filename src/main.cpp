@@ -5,12 +5,16 @@
 #include "parrot.hpp"
 
 #include <time.h>
+#include <iostream>
+#include <cctype>
 
+bool pollCommands(Zoo& zoo);
 
 int main(int argc, char *argv[])
 {
   srand(time(NULL));
 
+  // Initialize zoo
 
   Zoo zoo;
 
@@ -30,12 +34,58 @@ int main(int argc, char *argv[])
   zoo.addAnimal(&parrot1);
   zoo.addAnimal(&parrot2);
 
-  zoo.printAnimals();
+  // Poll for user input
+  bool gotExit = false;
+  while (!gotExit)
+  {
+    gotExit = pollCommands(zoo);
+  }
   
-  printf("\n");
-
-  zoo.liveDay();
-
+  printf("Exiting program\n");
 
   return 0;
+}
+
+bool pollCommands(Zoo& zoo)
+{
+  printf("\nPlease enter the next command.\n"
+         "1 = List all animals, properties and friends\n"
+         "2 = Live one day and update friendships\n"
+         "3 = Exit\n");
+
+  std::string commandStr;
+  std::cin >> commandStr;
+
+  if (!std::cin)
+  {
+    return false;
+  }
+
+  bool gotExit = false;
+  int32_t command = std::atoi(commandStr.c_str());
+
+  if (command == 1)
+  {
+    // List all animals
+    printf("\n");
+    zoo.printAnimals();
+  }
+  else if (command == 2)
+  {
+    // Live one day
+    printf("\n");
+    zoo.liveDay();
+  }
+  else if (command == 3)
+  {
+    // Exit
+    gotExit = true;
+  }
+  else
+  {
+    // Invalid input
+    printf("Please enter a valid input (integer, 1,2 or 3)!\n");
+  }
+
+  return gotExit;
 }
