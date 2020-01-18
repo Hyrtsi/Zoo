@@ -12,6 +12,7 @@ bool pollCommands(Zoo& zoo);
 
 int main(int argc, char *argv[])
 {
+  // Initialize the random seed only once per program run
   srand(time(NULL));
 
   // Initialize zoo

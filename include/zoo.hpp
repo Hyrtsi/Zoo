@@ -2,7 +2,6 @@
 #define ZOO_HPP
 
 #include "animal.hpp"
-#include <unordered_map>
 
 class Zoo
 {

@@ -1,6 +1,6 @@
 #include "zoo.hpp"
 #include <stdio.h>
-#include <algorithm> // for each
+#include <algorithm> // for_each
 
 void Zoo::printAnimals(void)
 {
