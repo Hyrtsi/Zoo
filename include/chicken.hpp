@@ -3,9 +3,21 @@
 
 #include "bird.hpp"
 
-class Chicken : Bird
+class Chicken : public Bird
 {
+public:
+  Chicken(const std::string name, const std::string favoriteFood,
+      double wingSpan, bool isBroiler,
+      const std::vector<AnimalID>& friends = std::vector<AnimalID>()) :
+    Bird(name, favoriteFood, wingSpan, friends),
+    _isBroiler(isBroiler)
+  {
+  }
 
+
+  void print(void);
+private:
+  bool _isBroiler;
 };
 
 #endif // CHICKEN_HPP

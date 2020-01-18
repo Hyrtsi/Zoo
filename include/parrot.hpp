@@ -5,7 +5,8 @@
 
 class Parrot : Bird
 {
-
+private:
+  bool _canSpeak;
 };
 
 #endif // PARROT_HPP
