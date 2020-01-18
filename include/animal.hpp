@@ -18,7 +18,7 @@ public:
 
   virtual void printProperties(void) = 0;
   
-  void printFriends(std::unordered_map<AnimalID, Animal*>& animalMap);
+  void printFriends(const std::unordered_map<AnimalID, Animal*>& animalMap);
 
   bool isFriendWith(AnimalID animal);
 

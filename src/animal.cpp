@@ -51,12 +51,12 @@ size_t Animal::nFriends(void)
   return _friends.size();
 }
 
-void Animal::printFriends(std::unordered_map<AnimalID, Animal*>& animalMap)
+void Animal::printFriends(const std::unordered_map<AnimalID, Animal*>& animalMap)
 {
   printf("Friends of %s are:\n", _name.c_str());
   for (auto& friendID : _friends)
   {
-    Animal* animalPtr = animalMap[friendID];
+    auto animalPtr = animalMap.at(friendID);
     printf("%s\n", animalPtr->name().c_str());
   }
 
