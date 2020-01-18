@@ -94,3 +94,9 @@ Last but not least. How this program was verified. As it is dealing with functio
 Things that may be tested automatically
 - `animal.hpp`: Create instance of an animal with known list of friends instead of empty list OR use `setFriendship`. Check with `isFriendWith` and `nFriends` that the results are according to what was set
 - `zoo.hpp`: Amount of friends for a given animal should change after `tryAddRandomFriend` and `tryRemoveRandomFriend` unless the animal had 0/max friends. `liveDay` should increase amount of friends 
+
+Manual tests
+- Feeding valid and invalid inputs to the program
+- Iterating many many days and checking if the amount of friends goes out of bounds or something else in prints seems out of place
+- Checking if the number of friends changes according the prints after a day
+- Checking that properties are correct for each animal
