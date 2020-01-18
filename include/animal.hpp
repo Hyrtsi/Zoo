@@ -10,8 +10,11 @@ typedef int64_t AnimalID;
 class Animal
 {
 public:
-  Animal(const std::string name, const std::string favoriteFood, const std::vector<AnimalID>& friends) :
+  Animal(const std::string name, const std::string favoriteFood,
+         const std::vector<AnimalID>& friends = std::vector<AnimalID>()) :
     _name(name), _favoriteFood(favoriteFood), _friends(friends) { }
+
+  void print(void);
 
 private:
   const std::string _name;
