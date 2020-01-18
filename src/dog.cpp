@@ -1,6 +1,6 @@
 #include "dog.hpp"
 
-void Dog::print(void)
+void Dog::printProperties(void)
 {
   printf("%s, favorite food %s, %zu friends, type %s\n",
          _name.c_str(),

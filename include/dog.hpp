@@ -14,7 +14,7 @@ public:
     _dogType(dogType) {}
 
 
-  void print(void);
+  void printProperties(void);
 private:
   const std::string _dogType;
 };

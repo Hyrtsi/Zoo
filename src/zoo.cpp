@@ -8,7 +8,9 @@ void Zoo::printAnimals(void) const
                 [](std::pair<AnimalID, Animal*> elem)
   {
     printf("%ld:", elem.first);
-    elem.second->print();
+    elem.second->printProperties();
+
+    elem.second->printFriends();
   });
 }
 

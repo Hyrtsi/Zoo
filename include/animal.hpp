@@ -17,7 +17,9 @@ public:
          const std::vector<AnimalID>& friends = std::vector<AnimalID>()) :
     _name(name), _favoriteFood(favoriteFood), _friends(friends) { }
 
-  virtual void print(void) = 0;
+  virtual void printProperties(void) = 0;
+  
+  void printFriends(void);
 
   bool isFriendWith(AnimalID animal);
 

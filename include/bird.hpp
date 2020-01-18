@@ -14,7 +14,8 @@ public:
   {
   }
 
-  void print(void) = 0;
+  void printProperties(void) = 0;
+
 protected:
   double _wingSpan;
 };

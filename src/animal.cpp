@@ -51,3 +51,14 @@ size_t Animal::nFriends(void)
 {
   return _friends.size();
 }
+
+void Animal::printFriends(void)
+{
+  printf("Friends of %s are: ", _name.c_str());
+  for (auto& friendID : _friends)
+  {
+    printf("%ld ", friendID);
+  }
+
+  printf("\n\n");
+}

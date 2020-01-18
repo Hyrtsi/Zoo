@@ -14,8 +14,8 @@ public:
   {
   }
 
+  void printProperties(void);
 
-  void print(void);
 private:
   bool _isBroiler;
 };

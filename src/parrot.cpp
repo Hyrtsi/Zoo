@@ -1,6 +1,6 @@
 #include "parrot.hpp"
 
-void Parrot::print(void)
+void Parrot::printProperties(void)
 {
   const std::string canSpeakStr = (_canSpeak) ? "can speak" : "cannot speak";
   printf("%s, favorite food %s, %zu friends, wingspan %.2f, %s\n",

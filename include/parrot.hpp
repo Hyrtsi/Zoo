@@ -14,7 +14,8 @@ public:
   {
   }
 
-  void print(void);
+  void printProperties(void);
+
 private:
   bool _canSpeak;
 };

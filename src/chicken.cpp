@@ -1,6 +1,6 @@
 #include "chicken.hpp"
 
-void Chicken::print(void)
+void Chicken::printProperties(void)
 {
   const std::string broilerStr = (_isBroiler) ? "is broiler" : "is not broiler";
   printf("%s, favorite food %s, %zu friends, wingspan %.2f, %s\n",
