@@ -29,7 +29,7 @@ How to let the class "know" its type (Dog, Parrot,...) and thus print the correc
 
 One could model the friends of all animals as a graph: one node for each animal, connections between nodes represent friendship. Then, interactions that change friendship change the connections.
 
-A way to implement this is to set up a `n x n` matrix where each cell represents whether there is a friendship between two animals. For instance, `friends[i][j]` is `1` if animal `i` and `j` are friends. The matrix would be symmetrical along the diagonal.
+A way to implement this is to set up a `n x n` matrix where each cell represents whether there is a friendship between two animals. For instance, `friends[i][j]` is `1` if animal `i` and `j` are friends. The matrix would be symmetrical along the diagonal so there would also be obsolete information in the data structure. In a considerably big zoo, the data structure could be flattened into 1D vector for faster search.
 
 This seemed overkill (and especially *boring*) at first so in the end the friendship was modeled with simply having list of animal IDs in a vector and editing that accordingly upon friendship updates.
 
@@ -49,12 +49,13 @@ After setting up the zoo, the program polls for user input until it gets exit. I
 
 ### Discussion on this solution
 
-One could have also used templates. (https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern)
+One could have used [CRTP](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern) instead
 
-One could have used ECS https://en.wikipedia.org/wiki/Entity_component_system
-https://github.com/Lehdari/TemplateECS
+One could have used [ECS](https://en.wikipedia.org/wiki/Entity_component_system) like [this one](https://github.com/Lehdari/TemplateECS)
 
-I tried to avoid overkill solutions for this (seemingly) simple task. However, I don't think I ended up with an **elegant** solution after all...
+I tried to avoid overkill solutions for this (seemingly) simple task. However, I don't think I ended up with an **elegant** solution after all.
+
+The zoo in this task is 7 animals, so I didn't even bother to think the time complexity of searches in the data structures. If there would have been a note on scalability in the problem poster, I would have done this probably differently and benchmarked different options.
 
 ## Installation (Ubuntu)
 
@@ -65,6 +66,7 @@ I tried to avoid overkill solutions for this (seemingly) simple task. However, I
 
 ```bash
 git clone https://github.com/Hyrtsi/Zoo.git
+cd Zoo
 mkdir build
 cd build
 cmake ..
