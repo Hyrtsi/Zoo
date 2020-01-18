@@ -2,33 +2,6 @@
 #include <stdio.h>
 #include <algorithm> // for each
 
-#include "dog.hpp"
-#include "chicken.hpp"
-#include "parrot.hpp"
-
-void Zoo::initializeZoo(void)
-{
-  //std::unique_ptr<Dog> ptr = std::make_unique<Dog>("Dog one", "Meat", "Hunting dog");
-  //addAnimal(ptr);
-
-  //Dog dog1("Dog one", "Meat", "Hunting dog");
-  //Dog dog2("Dog two", "Fresh meat", "Assistance dog");
-  //Dog dog3("Dog three", "Pedigree", "Racing dog");
-  //Chicken chicken1("Chicken one", "Corn", 0.75, true);
-  //Chicken chicken2("Chicken two", "Corn", 0.75, false);
-  //Parrot parrot1("Parrot one", "Grain", 0.25, false);
-  //Parrot parrot2("Parrot two", "Corn", 0.50, true);
-
-  //addAnimal(&dog1);
-  //addAnimal(&dog2);
-  //addAnimal(&dog3);
-  //addAnimal(&chicken1);
-  //addAnimal(&chicken2);
-  //addAnimal(&parrot1);
-  //addAnimal(&parrot2);
-}
-
-
 void Zoo::printAnimals(void)
 {
   std::for_each(_animalMap.begin(), _animalMap.end(),
