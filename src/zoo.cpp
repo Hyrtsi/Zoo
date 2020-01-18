@@ -7,7 +7,6 @@ void Zoo::printAnimals(void)
   std::for_each(_animalMap.begin(), _animalMap.end(),
                 [&](std::pair<AnimalID, Animal*> elem)
   {
-    printf("%ld:", elem.first);
     elem.second->printProperties();
 
     elem.second->printFriends(_animalMap);
