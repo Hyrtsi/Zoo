@@ -10,7 +10,7 @@ class Zoo
     Zoo(void) : _runningID(0L) { };
 
     // Print all animals, their properties and friends
-    void printAnimals(void) const;
+    void printAnimals(void);
 
     // Update the friends of all animals; print changes
     void liveDay(void);

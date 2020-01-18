@@ -2,15 +2,15 @@
 #include <stdio.h>
 #include <algorithm> // for each
 
-void Zoo::printAnimals(void) const
+void Zoo::printAnimals(void)
 {
   std::for_each(_animalMap.begin(), _animalMap.end(),
-                [](std::pair<AnimalID, Animal*> elem)
+                [&](std::pair<AnimalID, Animal*> elem)
   {
     printf("%ld:", elem.first);
     elem.second->printProperties();
 
-    elem.second->printFriends();
+    elem.second->printFriends(_animalMap);
   });
 }
 

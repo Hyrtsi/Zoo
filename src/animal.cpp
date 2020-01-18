@@ -1,5 +1,4 @@
 #include "animal.hpp"
-
 #include <algorithm>
 
 bool Animal::isFriendWith(AnimalID animal)
@@ -52,13 +51,19 @@ size_t Animal::nFriends(void)
   return _friends.size();
 }
 
-void Animal::printFriends(void)
+void Animal::printFriends(std::unordered_map<AnimalID, Animal*>& animalMap)
 {
-  printf("Friends of %s are: ", _name.c_str());
+  printf("Friends of %s are:\n", _name.c_str());
   for (auto& friendID : _friends)
   {
-    printf("%ld ", friendID);
+    Animal* animalPtr = animalMap[friendID];
+    printf("%s\n", animalPtr->name().c_str());
   }
 
-  printf("\n\n");
+  printf("\n");
+}
+
+const std::string Animal::name(void) const
+{
+  return _name;
 }

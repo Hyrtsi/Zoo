@@ -4,8 +4,7 @@
 #include <inttypes.h>
 #include <vector>
 #include <string>
-
-// common
+#include <unordered_map>
 #include <random>
 
 typedef int64_t AnimalID;
@@ -19,7 +18,7 @@ public:
 
   virtual void printProperties(void) = 0;
   
-  void printFriends(void);
+  void printFriends(std::unordered_map<AnimalID, Animal*>& animalMap);
 
   bool isFriendWith(AnimalID animal);
 
@@ -27,6 +26,8 @@ public:
 
   AnimalID loseOneRandomFriend(void);
   size_t nFriends(void);
+
+  const std::string name(void) const;
 
 protected:
   const std::string _name;
