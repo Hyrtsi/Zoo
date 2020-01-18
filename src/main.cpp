@@ -1,4 +1,3 @@
-#include <iostream>
 #include "animal.hpp"
 #include "zoo.hpp"
 #include "dog.hpp"
@@ -7,8 +6,6 @@
 
 int main(int argc, char *argv[])
 {
-  std::cout << "Hello World!" << std::endl;
-
   Zoo zoo;
 
   Dog dog1("Dog one", "Meat", "Hunting dog");
@@ -19,7 +16,6 @@ int main(int argc, char *argv[])
   Parrot parrot1("Parrot one", "Grain", 0.25, false);
   Parrot parrot2("Parrot two", "Corn", 0.50, true);
 
-
   zoo.addAnimal(&dog1);
   zoo.addAnimal(&dog2);
   zoo.addAnimal(&dog3);
@@ -29,6 +25,9 @@ int main(int argc, char *argv[])
   zoo.addAnimal(&parrot2);
 
   zoo.printAnimals();
+  
+  zoo.liveDay();
+
 
   return 0;
 }

@@ -2,14 +2,12 @@
 #define ZOO_HPP
 
 #include "animal.hpp"
+#include <unordered_map>
 
 class Zoo
 {
   public:
     Zoo(void) {};
-
-    // necessary...?
-    //Zoo(std::vector<Animal> animals);
 
     // Print all animals, their properties and friends
     void printAnimals(void);
@@ -18,9 +16,12 @@ class Zoo
     void liveDay(void);
 
     void addAnimal(Animal* animal);
-
+    
   private:
     std::vector<Animal*> _animals;
+    std::unordered_map<AnimalID, Animal*> _animalMap;
+    AnimalID _runningID;
+    void editFriendship(Animal* animal1, Animal* animal2, bool isFriend);
 };
 
 #endif // ZOO_HPP
