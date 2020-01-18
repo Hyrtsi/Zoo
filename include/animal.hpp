@@ -16,10 +16,15 @@ public:
 
   virtual void print(void) = 0;
 
+  bool isFriendWith(AnimalID animal);
+
+  void setFriendship(AnimalID animal, bool status);
+
 protected:
   const std::string _name;
   const std::string _favoriteFood;
   std::vector<AnimalID> _friends;
+
 };
 
 #endif // ANIMAL_HPP
