@@ -15,11 +15,6 @@ bool Animal::isFriendWith(AnimalID animal)
 
 void Animal::setFriendship(AnimalID animal, bool status)
 {
-  // as all friend stuff is commutative, the isfriendcurrently
-  // should not be checked always two times...
-  // maybe remove it from here... and assume that it's checked
-  // on caller site?
-
   bool isFriendCurrently = isFriendWith(animal);
   if (!isFriendCurrently && status)
   {
