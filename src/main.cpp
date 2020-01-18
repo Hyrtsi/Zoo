@@ -4,8 +4,14 @@
 #include "chicken.hpp"
 #include "parrot.hpp"
 
+#include <time.h>
+
+
 int main(int argc, char *argv[])
 {
+  srand(time(NULL));
+
+
   Zoo zoo;
 
   Dog dog1("Dog one", "Meat", "Hunting dog");

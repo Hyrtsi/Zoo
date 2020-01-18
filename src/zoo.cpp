@@ -14,17 +14,6 @@ void Zoo::printAnimals(void)
 
 void Zoo::liveDay(void)
 {
-  //for (auto& animal : _animals)
-  //{
-  //  // Make one random friend
-  //  // That is, take one random animal from list of all animals
-  //  // until found one that is not yet friend with this one
-  //  // Add friends to both
-
-  //  // Lose one random friend
-  //  // same but vice versa...
-  //}
-
   std::for_each(_animalMap.begin(), _animalMap.end(),
                 [&](std::pair<AnimalID, Animal*> animalData)
   {
@@ -35,17 +24,15 @@ void Zoo::liveDay(void)
 
     printf("Updating animal %ld\n", animalID);
 
-    if (animal->nFriends() > 0)
-    {
-      AnimalID lostFriend = animal->loseOneRandomFriend();
-      _animalMap[lostFriend]->setFriendship(animalID, false);
-      printf("Animal %ld lost friend %ld\n", animalID, lostFriend);
-    }
+    printf("Try remove random friend\n");
 
+    tryRemoveRandomFriend(animalID, animal);
 
-    // Surf all animals randomly? until found non-friend...
+    printf("Try add random friend\n");
 
-   // _animalMap.size();
+    tryAddRandomFriend(animalID, animal);
+
+    printf("__\n");
 
   });
 
@@ -54,10 +41,70 @@ void Zoo::liveDay(void)
 void Zoo::addAnimal(Animal* animal)
 {
   _animalMap[_runningID] = animal;
+  _animalIDs.push_back(_runningID);
+
   ++_runningID;
 }
 
 void Zoo::editFriendship(Animal* animal1, Animal* animal2, bool isFriend)
 {
 
+}
+
+
+void Zoo::tryAddRandomFriend(AnimalID animalID, Animal* animal)
+{
+  if (animal->nFriends() < _animalMap.size() - 1)
+  {
+    // Add random friend
+
+    // Get random animalID of the group of all animal IDs...?
+
+    // Loop until found an animal that
+    // (1) is not self
+    // (2) is not yet a friend
+
+
+    bool foundNewFriend = false;
+    
+    int32_t maxTries = 20;
+    int32_t nTries = 0;
+    while (!foundNewFriend)
+    {
+      ++nTries;
+      if (nTries > maxTries) break;
+
+
+      // Take random number from 0 to nFriends
+      int64_t randIndex = rand() % _animalIDs.size();
+      AnimalID newFriendCandidateID = _animalIDs[randIndex];
+
+      printf("Candidate %ld, self %ld\n", newFriendCandidateID, animalID );
+
+      // Check that it's not self
+      // Check if it's a new friend
+      if ((newFriendCandidateID != animalID)
+          && !animal->isFriendWith(newFriendCandidateID))
+      {
+        animal->setFriendship(newFriendCandidateID, true);
+          // set also the other way around...
+
+        _animalMap[newFriendCandidateID]->setFriendship(animalID, true);
+        printf("Added friend %ld for %ld\n",
+                newFriendCandidateID, animalID);
+        foundNewFriend = true;
+      }
+    }
+  }
+  // else: already friend of everyone (expect oneself)
+}
+
+void Zoo::tryRemoveRandomFriend(AnimalID animalID, Animal* animal)
+{
+  if (animal->nFriends() > 0)
+  {
+    AnimalID lostFriend = animal->loseOneRandomFriend();
+    _animalMap[lostFriend]->setFriendship(animalID, false);
+    printf("Animal %ld lost friend %ld\n", animalID, lostFriend);
+  }
 }

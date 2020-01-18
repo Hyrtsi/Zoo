@@ -17,8 +17,13 @@ class Zoo
 
     void addAnimal(Animal* animal);
     
+    void tryAddRandomFriend(AnimalID animalID, Animal* animal);
+
+    void tryRemoveRandomFriend(AnimalID animalID, Animal* animal);
+
   private:
     std::unordered_map<AnimalID, Animal*> _animalMap;
+    std::vector<AnimalID> _animalIDs;
     AnimalID _runningID;
     void editFriendship(Animal* animal1, Animal* animal2, bool isFriend);
 };

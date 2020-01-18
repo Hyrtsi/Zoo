@@ -1,9 +1,6 @@
 #include "animal.hpp"
 
 #include <algorithm>
-#include <random>
-#include <time.h>
-
 
 bool Animal::isFriendWith(AnimalID animal)
 {
@@ -23,7 +20,7 @@ void Animal::setFriendship(AnimalID animal, bool status)
   // should not be checked always two times...
   // maybe remove it from here... and assume that it's checked
   // on caller site?
-  
+
   bool isFriendCurrently = isFriendWith(animal);
   if (!isFriendCurrently && status)
   {
@@ -40,11 +37,14 @@ void Animal::setFriendship(AnimalID animal, bool status)
 AnimalID Animal::loseOneRandomFriend(void)
 {
   // Take random number from 0 to nFriends
-  srand(time(NULL));
   int64_t randIndex = rand() % _friends.size();
 
+  AnimalID lostFriendID = _friends[randIndex];
+
   // Lose the random friend
-  setFriendship(_friends[randIndex], false);
+  setFriendship(lostFriendID, false);
+
+  return lostFriendID;
 }
 
 size_t Animal::nFriends(void)

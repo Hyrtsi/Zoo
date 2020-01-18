@@ -5,6 +5,9 @@
 #include <vector>
 #include <string>
 
+// common
+#include <random>
+
 typedef int64_t AnimalID;
 
 class Animal
