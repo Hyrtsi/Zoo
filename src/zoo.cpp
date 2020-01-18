@@ -24,18 +24,8 @@ void Zoo::liveDay(void)
     AnimalID animalID = animalData.first;
     Animal* animal = animalData.second;
 
-    printf("Updating animal %ld\n", animalID);
-
-    printf("Try remove random friend\n");
-
     tryRemoveRandomFriend(animalID, animal);
-
-    printf("Try add random friend\n");
-
     tryAddRandomFriend(animalID, animal);
-
-    printf("__\n");
-
   });
 
 }
@@ -64,8 +54,6 @@ void Zoo::tryAddRandomFriend(AnimalID animalID, Animal* animal)
       int64_t randIndex = rand() % _animalIDs.size();
       AnimalID newFriendCandidateID = _animalIDs[randIndex];
 
-      printf("Candidate %ld, self %ld\n", newFriendCandidateID, animalID );
-
       // Check that it's not self
       // Check if it's a new friend
       if ((newFriendCandidateID != animalID)
@@ -77,8 +65,9 @@ void Zoo::tryAddRandomFriend(AnimalID animalID, Animal* animal)
 
         _animalMap[newFriendCandidateID]->setFriendship(animalID, true);
 
-        printf("Added friend %ld for %ld\n",
-                newFriendCandidateID, animalID);
+        printf("%s has establised friendship with %s\n",
+               _animalMap.at(animalID)->name().c_str(),
+               _animalMap.at(newFriendCandidateID)->name().c_str());
 
         foundNewFriend = true;
       }
@@ -93,6 +82,9 @@ void Zoo::tryRemoveRandomFriend(AnimalID animalID, Animal* animal)
   {
     AnimalID lostFriend = animal->loseOneRandomFriend();
     _animalMap[lostFriend]->setFriendship(animalID, false);
-    printf("Animal %ld lost friend %ld\n", animalID, lostFriend);
+
+    printf("%s has lost friendship with %s\n",
+           _animalMap.at(animalID)->name().c_str(),
+           _animalMap.at(lostFriend)->name().c_str());
   }
 }
