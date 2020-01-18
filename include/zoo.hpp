@@ -17,10 +17,10 @@ class Zoo
     // Update the friends of all animals; print changes
     void liveDay(void);
 
-    void addAnimal(Animal animal);
+    void addAnimal(Animal* animal);
 
   private:
-    std::vector<Animal> _animals;
+    std::vector<Animal*> _animals;
 };
 
 #endif // ZOO_HPP

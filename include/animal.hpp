@@ -14,9 +14,9 @@ public:
          const std::vector<AnimalID>& friends = std::vector<AnimalID>()) :
     _name(name), _favoriteFood(favoriteFood), _friends(friends) { }
 
-  void print(void);
+  virtual void print(void) = 0;
 
-private:
+protected:
   const std::string _name;
   const std::string _favoriteFood;
   std::vector<AnimalID> _friends;

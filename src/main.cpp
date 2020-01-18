@@ -1,24 +1,22 @@
-#include "animal.hpp"
-
 #include <iostream>
-
+#include "animal.hpp"
 #include "zoo.hpp"
+#include "dog.hpp"
 
 int main(int argc, char *argv[])
 {
   std::cout << "Hello World!" << std::endl;
 
-  Animal foo("kissa", "kala", std::vector<AnimalID>());
-  
   Zoo zoo;
 
-  zoo.addAnimal(Animal("Dog one", "Meat")); // todo dog type??
-  zoo.addAnimal(Animal("Parrot one", "Grain")); // todo wingspan??
-  zoo.addAnimal(Animal("Chicken one", "Corn"));
-  zoo.addAnimal(Animal("Dog two", "Fresh meat"));
+  Dog dog1("Dog one", "Meat", "Hunting dog");
+  Dog dog2("Dog two", "Fresh meat", "Assistance dog");
+  zoo.addAnimal(&dog1);
+  zoo.addAnimal(&dog2);
 
   zoo.printAnimals();
 
+  zoo.printAnimals();
 
   return 0;
 }
