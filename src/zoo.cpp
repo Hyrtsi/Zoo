@@ -40,40 +40,43 @@ void Zoo::addAnimal(Animal* animal)
 
 void Zoo::tryAddRandomFriend(AnimalID animalID, Animal* animal)
 {
-  if (animal->nFriends() < _animalMap.size() - 1)
+  if (animal->nFriends() >= _animalMap.size() - 1)
   {
-    // Loop until found an animal that
-    // (1) is not self
-    // (2) is not yet a friend
+    // Already friend of everyone(expect oneself)
+    return;
+  }
 
-    bool foundNewFriend = false;
+  // Loop until found an animal that
+  // (1) is not self
+  // (2) is not yet a friend
+
+  bool foundNewFriend = false;
     
-    while (!foundNewFriend)
+  while (!foundNewFriend)
+  {
+    // Take random number from 0 to nFriends
+    int64_t randIndex = rand() % _animalIDs.size();
+    AnimalID newFriendCandidateID = _animalIDs[randIndex];
+
+    // Check that it's not self
+    // Check if it's a new friend
+    if ((newFriendCandidateID != animalID)
+        && !animal->isFriendWith(newFriendCandidateID))
     {
-      // Take random number from 0 to nFriends
-      int64_t randIndex = rand() % _animalIDs.size();
-      AnimalID newFriendCandidateID = _animalIDs[randIndex];
-
-      // Check that it's not self
-      // Check if it's a new friend
-      if ((newFriendCandidateID != animalID)
-          && !animal->isFriendWith(newFriendCandidateID))
-      {
-        animal->setFriendship(newFriendCandidateID, true);
+      animal->setFriendship(newFriendCandidateID, true);
         
-        // set also the other way around...
+      // set also the other way around...
 
-        _animalMap[newFriendCandidateID]->setFriendship(animalID, true);
+      _animalMap[newFriendCandidateID]->setFriendship(animalID, true);
 
-        printf("%s has establised friendship with %s\n",
-               _animalMap.at(animalID)->name().c_str(),
-               _animalMap.at(newFriendCandidateID)->name().c_str());
+      printf("%s has establised friendship with %s\n",
+              _animalMap.at(animalID)->name().c_str(),
+              _animalMap.at(newFriendCandidateID)->name().c_str());
 
-        foundNewFriend = true;
-      }
+      foundNewFriend = true;
     }
   }
-  // else: already friend of everyone (expect oneself)
+
 }
 
 void Zoo::tryRemoveRandomFriend(AnimalID animalID, Animal* animal)
